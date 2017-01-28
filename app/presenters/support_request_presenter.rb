@@ -1,2 +1,0 @@
-class SupportRequestPresenter < ApplicationPresenter
-end

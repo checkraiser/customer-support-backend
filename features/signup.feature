@@ -1,6 +1,6 @@
 Feature: Sign up
   As a customer I want to sign up
-  to be able to create support requests
+  to be able to create tickets
   and to view status of previous requests.
 
   Scenario: Successful customer registration

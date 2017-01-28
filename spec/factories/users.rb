@@ -7,7 +7,13 @@ FactoryGirl.define do
     role 'customer'
 
     factory :support_agent do
+      email { generate :support_agent_email }
       role 'support_agent'
+    end
+
+    factory :admin do
+      email { generate :admin_email }
+      role 'admin'
     end
   end
 end

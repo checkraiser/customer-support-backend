@@ -10,16 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124174342) do
+ActiveRecord::Schema.define(version: 20170128035108) do
 
-  create_table "support_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "replies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "body"
+    t.integer  "ticket_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ticket_id"], name: "index_replies_on_ticket_id", using: :btree
+    t.index ["user_id"], name: "index_replies_on_user_id", using: :btree
+  end
+
+  create_table "tickets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.text     "body",       limit: 65535
     t.integer  "user_id"
     t.string   "status"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-    t.index ["user_id"], name: "index_support_requests_on_user_id", using: :btree
+    t.datetime "closed_at"
+    t.index ["user_id"], name: "index_tickets_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -36,5 +47,5 @@ ActiveRecord::Schema.define(version: 20170124174342) do
     t.index ["role"], name: "index_users_on_role", using: :btree
   end
 
-  add_foreign_key "support_requests", "users"
+  add_foreign_key "tickets", "users"
 end

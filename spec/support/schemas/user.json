@@ -15,11 +15,15 @@
     "last_name": {
       "type": "string"
     },
+    "full_name": {
+      "type": "string"
+    },
     "required": [
       "id",
       "email",
       "first_name",
-      "last_name"
+      "last_name",
+      "full_name"
     ]
   }
 }

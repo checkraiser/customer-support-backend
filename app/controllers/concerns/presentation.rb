@@ -9,9 +9,10 @@ module Presentation
 
   def present(object, status = nil, with: nil)
     return object if object.blank?
+    klass = with || presenter_class(object)
 
     @resource =
-      if klass = with || presenter_class(object)
+      if klass
         klass.decorate object
       else
         object
@@ -26,6 +27,6 @@ module Presentation
 
   def presenter_class(object)
     object = object.respond_to?(:to_a) ? object.first : object
-    "#{object.class}Presenter".constantize
+    "#{object.class}Presenter".safe_constantize
   end
 end

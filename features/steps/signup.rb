@@ -12,7 +12,7 @@ class Spinach::Features::SignUp < Spinach::FeatureSteps
   end
 
   When 'I sign up as a customer' do
-    post '/signup', signup: signup_params
+    post '/signup', signup_params
   end
 
   Then 'I can access application' do

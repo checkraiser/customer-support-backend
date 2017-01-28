@@ -3,10 +3,10 @@ module UserAuth
 
   class_methods do
     def from_token_request(request)
-      email = request.params.dig('auth', 'email')
-      if email.present?
-        User.find_by(email: email) || raise(ApplicationError, 'Invalid login credentials. Please try again.')
-      end
+      email = request.params.fetch('email')
+      return unless email.present?
+
+      User.find_by(email: email) || raise(ApplicationError, 'Invalid login credentials. Please try again.')
     end
 
     def from_token_payload(claims)
@@ -15,7 +15,7 @@ module UserAuth
   end
 
   def to_token_payload
-    attributes.slice('email', 'last_name', 'first_name').update(sub: id)
+    attributes.slice('email', 'last_name', 'first_name', 'role').update(sub: id)
   end
 
   def jwt_token

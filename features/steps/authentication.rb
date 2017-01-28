@@ -36,10 +36,8 @@ class Spinach::Features::Authentication < Spinach::FeatureSteps
 
   def auth_email_params(email, password)
     {
-      auth: {
-        email: email,
-        password: password
-      }
+      email: email,
+      password: password
     }
   end
 

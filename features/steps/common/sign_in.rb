@@ -32,10 +32,8 @@ module Common
 
     def auth_params(user)
       {
-        auth: {
-          email: user.email,
-          password: user.password
-        }
+        email: user.email,
+        password: user.password
       }
     end
 

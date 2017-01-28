@@ -53,6 +53,10 @@ class ApplicationPolicy
     @user&.support_agent?
   end
 
+  def admin?
+    @user&.admin?
+  end
+
   def me?(user)
     @user.id.eql?(user.id)
   end

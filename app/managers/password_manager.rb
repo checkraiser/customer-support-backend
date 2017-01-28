@@ -1,13 +1,19 @@
+# PasswordManager is responsible for
+# sending and reseting passwords
 class PasswordManager < ApplicationManager
+  # @param [Hash] params
   def send_token(params)
     with_transaction do
-      if user = User.find_by(email: params[:email])
+      user = User.find_by(email: params[:email])
+
+      if user
         generate_reset_password_token_for(user)
         mail_reset_password_instructions(user)
       end
     end
   end
 
+  # @param [Hash] params
   def reset_password(params)
     reset_password_token = params[:reset_password_token]
     password = params[:password]

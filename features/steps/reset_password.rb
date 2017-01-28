@@ -19,7 +19,7 @@ class Spinach::Features::ResetPassword < Spinach::FeatureSteps
   private
 
   def sign_in(email, password)
-    post '/login', auth: { email: email, password: password }
+    post '/login', email: email, password: password
   end
 
   def reset_password_url

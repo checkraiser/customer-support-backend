@@ -4,7 +4,7 @@ class PasswordsController < ApplicationController
 
   def create
     password_manager.send_token(create_params)
-    head 204
+    head :no_content
   end
 
   def update

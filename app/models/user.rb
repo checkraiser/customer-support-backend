@@ -2,7 +2,9 @@ class User < ApplicationRecord
   has_secure_password
   include UserAuth
 
-  has_many :support_requests
+  has_many :tickets
+
+  validates :first_name, :last_name, :email, presence: true
 
   def name
     "#{first_name} #{last_name}"
@@ -14,5 +16,9 @@ class User < ApplicationRecord
 
   def customer?
     role == 'customer'
+  end
+
+  def admin?
+    role == 'admin'
   end
 end

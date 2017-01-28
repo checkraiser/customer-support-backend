@@ -7,4 +7,6 @@ Feature: Reset password
     When I request to reset password
     Then I get reset password instructions via email
     When I set new password
-    When I can sign in using this password
+    Then response is 204 No Content
+    And I can sign in using this password
+
