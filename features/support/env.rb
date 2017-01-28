@@ -1,4 +1,9 @@
 ENV['RAILS_ENV'] = 'test'
+# simplecov for code coverage
+require 'simplecov'
+SimpleCov.start :rails do
+end
+
 require './config/environment'
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 Dir[Rails.root.join('features/steps/common/**/*.rb')].each { |f| require f }

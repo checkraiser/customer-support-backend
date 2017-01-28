@@ -34,7 +34,11 @@ Chewy.strategy(:atomic) do
       create :ticket, user: customer, created_at: rand_created_at, updated_at: rand_created_at
     end
     10.times do
-      create :ticket, status: Ticket::STATUS.closed, user: customer, closed_at: rand_closed_at
+      create :ticket, status: Ticket::STATUS.closed,
+        user: customer,
+        created_at: rand_created_at,
+        updated_at: rand_created_at,
+        closed_at: rand_closed_at
     end
   end
 end

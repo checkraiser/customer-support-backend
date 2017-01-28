@@ -4,4 +4,5 @@ class Reply < ApplicationRecord
 
   validates :body, :user, presence: true
   validates :user, associated: true
+  validates :body, length: { maximum: 500 }
 end

@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  ROLE = OpenStruct.new(admin: 'admin', agent: 'support_agent', customer: 'customer').freeze
+
   has_secure_password
   include UserAuth
 
@@ -11,14 +13,14 @@ class User < ApplicationRecord
   end
 
   def support_agent?
-    role == 'support_agent'
+    role == ROLE.agent
   end
 
   def customer?
-    role == 'customer'
+    role == ROLE.customer
   end
 
   def admin?
-    role == 'admin'
+    role == ROLE.admin
   end
 end

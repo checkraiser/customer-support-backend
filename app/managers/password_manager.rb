@@ -9,6 +9,7 @@ class PasswordManager < ApplicationManager
       if user
         generate_reset_password_token_for(user)
         mail_reset_password_instructions(user)
+        user.reset_password_token
       end
     end
   end
@@ -25,13 +26,13 @@ class PasswordManager < ApplicationManager
   def update_password(reset_password_token, password)
     with_transaction do
       user = User.find_by! reset_password_token: reset_password_token
-      user.update! password: password
+      user.update! password: password, reset_password_token: nil
       user
     end
   end
 
   def generate_reset_password_token_for(user)
-    user.update reset_password_token: generate_unique_secure_token
+    user.update! reset_password_token: generate_unique_secure_token
   end
 
   def mail_reset_password_instructions(user)

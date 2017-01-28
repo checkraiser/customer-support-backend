@@ -56,6 +56,7 @@ group :development, :test do
   gem 'timecop'
   gem 'email_spec'
   gem 'rspec-its'
+  gem 'simplecov', require: false
 end
 
 group :development do

@@ -28,7 +28,7 @@ class TicketPolicy < ApplicationPolicy
   end
 
   def update?
-    support_agent? && own_request?
+    admin? || support_agent? || own_request?
   end
 
   private

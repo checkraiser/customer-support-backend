@@ -19,15 +19,7 @@ module ApiCommon
     controller_name.singularize.classify.constantize
   end
 
-  def search_class_name
-    controller_name.pluralize.capitalize
-  end
-
-  def with_deleted?
-    resource_class.respond_to?(:with_deleted)
-  end
-
   def destroying?
-    action.destroy? && with_deleted?
+    action.destroy?
   end
 end

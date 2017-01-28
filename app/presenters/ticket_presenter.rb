@@ -1,4 +1,8 @@
 class TicketPresenter < ApplicationPresenter
+  def author
+    object.name
+  end
+
   def user
     UserPresenter.new(object.user)
   end

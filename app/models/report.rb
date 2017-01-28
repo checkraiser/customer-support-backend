@@ -20,8 +20,8 @@ class Report
   end
 
   def search
-    query = sSearch.new(params).search
-    count_query = sSearch.new(params).search.search_type(:count)
+    query = TicketsSearch.new(params).search
+    count_query = TicketsSearch.new(params).search.search_type(:count)
     query.offset(0).limit(count_query.total).to_a
   end
 end

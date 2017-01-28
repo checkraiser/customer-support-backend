@@ -6,5 +6,4 @@ json.extract! ticket,
               :created_at,
               :closed_at,
               :updated_at,
-              :open_time,
               :author
