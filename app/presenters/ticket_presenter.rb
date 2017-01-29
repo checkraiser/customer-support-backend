@@ -1,6 +1,6 @@
 class TicketPresenter < ApplicationPresenter
   def author
-    object.name
+    object.user.name
   end
 
   def user

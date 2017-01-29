@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user
-  skip_after_action :verify_authorized
+  before_action :authorize_resource
+  skip_before_action :authenticate_user, only: :signup
 
   def index
     present(paginate(search(search_params)))
@@ -11,11 +11,24 @@ class UsersController < ApplicationController
     head :created
   end
 
+  def destroy
+    record.destroy!
+  end
+
   private
+
+  def authorize_resource
+    return authorize(:user) if no_resource?
+    authorize record
+  end
 
   def signup_params
     params.permit(
       :email, :password, :first_name, :last_name
     )
+  end
+
+  def search_params
+    params.permit(:status, :q)
   end
 end

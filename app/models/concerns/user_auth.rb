@@ -15,7 +15,7 @@ module UserAuth
   end
 
   def to_token_payload
-    attributes.slice('email', 'last_name', 'first_name', 'role').update(sub: id)
+    attributes.slice('email', 'last_name', 'first_name', 'role').update(sub: id, full_name: name)
   end
 
   def jwt_token

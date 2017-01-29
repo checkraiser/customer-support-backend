@@ -8,6 +8,7 @@ module ErrorHandling
     rescue_from ActionController::RoutingError, with: :not_found
     rescue_from ActionController::ParameterMissing, with: :parameter_missing
     rescue_from ActiveRecord::RecordInvalid, with: :active_model_error
+    rescue_from ActiveRecord::RecordNotDestroyed, with: :active_model_error
   end
 
   def route_not_found
@@ -41,7 +42,7 @@ module ErrorHandling
   def user_not_authorized(exception)
     policy_name = exception.policy.class.to_s.underscore
     default_error_message = I18n.t "#{policy_name}.#{exception.query}", scope: 'pundit', default: :default
-    error_status = 401
+    error_status = current_user ? 403 : 401
     @errors = { base: [default_error_message] }
     record_errors = exception.record.try(:errors)
     unless record_errors.blank?

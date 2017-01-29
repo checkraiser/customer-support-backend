@@ -31,6 +31,10 @@ class TicketsController < ApplicationController
     render :show
   end
 
+  def destroy
+    record.destroy!
+  end
+
   private
 
   def authorize_resource

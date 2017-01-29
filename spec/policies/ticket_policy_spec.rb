@@ -102,4 +102,18 @@ describe TicketPolicy do
       expect(subject).not_to permit(User.new(role: User::ROLE.agent), ticket)
     end
   end
+
+  permissions :destroy? do
+    it 'grants access if user is an admin' do
+      expect(subject).to permit(User.new(role: User::ROLE.admin), ticket)
+    end
+
+    it 'denies access if user is an customer' do
+      expect(subject).not_to permit(User.new(role: User::ROLE.customer), ticket)
+    end
+
+    it 'denies access if user is a support agent' do
+      expect(subject).not_to permit(User.new(role: User::ROLE.agent), ticket)
+    end
+  end
 end

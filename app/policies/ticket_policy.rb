@@ -31,6 +31,10 @@ class TicketPolicy < ApplicationPolicy
     admin? || support_agent? || own_request?
   end
 
+  def destroy?
+    admin?
+  end
+
   private
 
   def own_request?

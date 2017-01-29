@@ -6,7 +6,6 @@ class ApplicationController < ActionController::API
   include Authorization
   include Searching
   include Pagination
-  include Searching
   include Presentation
   include Caching
 end

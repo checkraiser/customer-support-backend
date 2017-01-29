@@ -17,14 +17,14 @@
     },
     "author": {
       "$ref": "user.json"
-    },
-    "required": [
-      "id",
-      "body",
-      "author",
-      "created_at",
-      "updated_at"
-    ]
-  }
+    }
+  },
+  "required": [
+    "id",
+    "body",
+    "author",
+    "created_at",
+    "updated_at"
+  ]
 }
 

@@ -6,8 +6,8 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 # simplecov for code coverage
 require 'simplecov'
 SimpleCov.start :rails do
-  add_filter '/app/controllers'
-  add_filter '/app/presenters'
+  # add_filter '/app/controllers'
+  # add_filter '/app/presenters'
 end
 require 'spec_helper'
 require 'rspec/rails'

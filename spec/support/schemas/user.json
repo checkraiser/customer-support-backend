@@ -4,7 +4,7 @@
   "additionalProperties": false,
   "properties": {
     "id": {
-      "type": "string"
+      "type": "number"
     },
     "email": {
       "type": "string"
@@ -15,16 +15,20 @@
     "last_name": {
       "type": "string"
     },
-    "full_name": {
+    "role": {
       "type": "string"
     },
-    "required": [
-      "id",
-      "email",
-      "first_name",
-      "last_name",
-      "full_name"
-    ]
-  }
+    "full_name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "email",
+    "role",
+    "first_name",
+    "last_name",
+    "full_name"
+  ]
 }
 

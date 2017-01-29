@@ -3,11 +3,10 @@ Rails.application.routes.draw do
 
   scope defaults: { format: :json } do
     root to: 'home#index'
-    post 'signup' => 'users#signup'
     post 'login' => 'user_token#create'
     resource :password, only: %i(create update)
 
-    resources :tickets, only: %i(index show create) do
+    resources :tickets, only: %i(index show create destroy) do
       collection do
         post :search, to: 'tickets#index'
       end
@@ -15,6 +14,13 @@ Rails.application.routes.draw do
         post :reply
         put :reopen
         put :close
+      end
+    end
+
+    resources :users, only: %i(index destroy) do
+      collection do
+        post :search, to: 'users#index'
+        post :signup
       end
     end
 

@@ -5,7 +5,7 @@ describe ReportsPolicy do
 
   permissions :show? do
     it 'denies access if user is a customer' do
-      expect(subject).not_to permit(User.new(role: 'customer'))
+      expect(subject).not_to permit(User.new(role: User::ROLE.customer))
     end
 
     it 'grants access if user is an admin' do

@@ -22,7 +22,11 @@ describe User, type: :model do
   end
 
   describe '#to_token_payload' do
-    let(:payload) { subject.attributes.slice('email', 'last_name', 'first_name', 'role').update(sub: subject.id) }
+    let(:payload) do
+      subject.attributes
+        .slice('email', 'last_name', 'first_name', 'role')
+        .update(sub: subject.id, full_name: subject.name)
+    end
 
     specify { expect(subject.to_token_payload).to eql(payload) }
   end

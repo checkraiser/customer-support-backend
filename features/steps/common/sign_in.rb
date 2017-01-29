@@ -10,6 +10,10 @@ module Common
       sign_in support_agent
     end
 
+    Given "I'm logged in as an admin" do
+      sign_in admin
+    end
+
     def current_user
       @current_user
     end
@@ -20,6 +24,10 @@ module Common
 
     def support_agent
       @support_agent ||= create(:support_agent)
+    end
+
+    def admin
+      @admin ||= create(:admin)
     end
 
     def sign_in(user)
