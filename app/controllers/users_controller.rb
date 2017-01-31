@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   before_action :authorize_resource
-  skip_before_action :authenticate_user, only: :signup
+  skip_before_action :authenticate_user, only: :create
 
   def index
     present(paginate(search(search_params)))
   end
 
-  def signup
+  def create
     UserCreationManager.new.create(signup_params)
     head :created
   end

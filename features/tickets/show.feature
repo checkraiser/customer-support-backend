@@ -10,7 +10,7 @@ Feature: Show Ticket
   Scenario: Customer gets wrong ticket
     Given I'm logged in as a customer
     When I get wrong ticket
-    Then I get 401 error
+    Then I get 403 error
 
   Scenario: Get ticket for support agent
     Given I'm logged in as a support agent

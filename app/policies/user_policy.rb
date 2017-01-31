@@ -3,8 +3,8 @@ class UserPolicy < ApplicationPolicy
     admin?
   end
 
-  def signup?
-    true
+  def create?
+    admin? || !@user
   end
 
   def destroy?

@@ -17,8 +17,11 @@ describe UserPolicy do
     end
   end
 
-  permissions :signup? do
-    it 'grants access' do
+  permissions :create? do
+    it 'grants access if user is an admin' do
+      expect(subject).to permit(User.new(role: User::ROLE.admin))
+    end
+    it 'grants access if user is nil' do
       expect(subject).to permit(nil)
     end
   end
