@@ -21,17 +21,19 @@ class TicketManager < ApplicationManager
   # sets ticket's status to Ticket::STATUS.open
   # @param [Ticket] ticket
   def reopen(ticket)
-    with_transaction do
-      ticket.update!(status: Ticket::STATUS.open)
-    end
+    ticket.update!(status: Ticket::STATUS.open)
   end
 
   # sets ticket's status to Ticket::STATUS.closed
   # and closed_at to current time
   # @param [Ticket] ticket
   def close(ticket)
-    with_transaction do
-      ticket.update!(status: Ticket::STATUS.closed, closed_at: Time.current)
-    end
+    ticket.update!(status: Ticket::STATUS.closed, closed_at: Time.current)
+  end
+
+  # destroys the ticket
+  # @param [Ticket] ticket
+  def destroy(ticket)
+    ticket.destroy!
   end
 end

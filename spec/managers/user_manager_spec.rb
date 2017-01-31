@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe UserCreationManager, freeze: true do
+describe UserManager, freeze: true do
   subject { described_class.new }
 
   describe '#create' do
@@ -13,8 +13,8 @@ describe UserCreationManager, freeze: true do
     context 'when email exists in db' do
       before { subject.create(params) }
 
-      it 'raises error ApplicationError' do
-        expect { subject.create(params) }.to raise_error(ApplicationError)
+      it 'raises error ActiveRecord::RecordInvalid' do
+        expect { subject.create(params) }.to raise_error(ActiveRecord::RecordInvalid)
       end
     end
   end

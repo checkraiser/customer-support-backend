@@ -7,12 +7,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    UserCreationManager.new.create(signup_params)
+    user_manager.create(signup_params)
     head :created
   end
 
   def destroy
-    record.destroy!
+    user_manager.destroy(record)
   end
 
   private
@@ -30,5 +30,9 @@ class UsersController < ApplicationController
 
   def search_params
     params.permit(:status, :q)
+  end
+
+  def user_manager
+    UserManager.new
   end
 end

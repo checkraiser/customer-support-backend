@@ -1,13 +1,15 @@
 class User < ApplicationRecord
-  update_index 'users#user', :self
   ROLE = OpenStruct.new(admin: 'admin', agent: 'support_agent', customer: 'customer').freeze
 
+  update_index 'users#user', :self
   has_secure_password
+
   include UserAuth
 
   has_many :tickets, dependent: :restrict_with_error
 
   validates :first_name, :last_name, :email, presence: true
+  validates :email, uniqueness: true
 
   def name
     "#{first_name} #{last_name}"

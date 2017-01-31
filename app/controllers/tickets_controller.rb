@@ -32,7 +32,7 @@ class TicketsController < ApplicationController
   end
 
   def destroy
-    record.destroy!
+    ticket_manager.destroy(record)
   end
 
   private
