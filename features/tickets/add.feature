@@ -4,7 +4,7 @@ Feature: Add Ticket
   Scenario: Customer creates ticket
     Given I'm logged in as a customer
     When I create ticket
-    Then response is 204 No Content
+    Then response is 200 Ok
 
   Scenario: The params is invalid
     Given I'm logged in as a customer

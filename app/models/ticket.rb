@@ -1,5 +1,5 @@
 class Ticket < ApplicationRecord
-  STATUS = OpenStruct.new(new: 'new', open: 'open', closed: 'closed').freeze
+  STATUS = OpenStruct.new(new: 'new'.freeze, open: 'open'.freeze, closed: 'closed'.freeze).freeze
 
   update_index 'tickets#ticket', :self
 

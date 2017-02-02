@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -qq -y --no-install-recommends \
       apt-get clean && \
       rm -rf /var/lib/apt/lists/*
 
-ENV APP /usr/src/app
+ENV APP /app
 RUN mkdir -p $APP
 WORKDIR $APP
 

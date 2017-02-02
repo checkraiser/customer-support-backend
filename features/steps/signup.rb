@@ -22,7 +22,7 @@ class Spinach::Features::SignUp < Spinach::FeatureSteps
   end
 
   Then 'I get "user is already signed up" error' do
-    expect(parsed_body.dig(:errors, :base)).to eql ['User is already signed up']
+    expect(parsed_body.dig(:errors, :email)).to eql ['has already been taken']
   end
 
   private

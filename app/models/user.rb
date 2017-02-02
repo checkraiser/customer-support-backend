@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  ROLE = OpenStruct.new(admin: 'admin', agent: 'support_agent', customer: 'customer').freeze
+  ROLE = OpenStruct.new(admin: 'admin'.freeze, agent: 'support_agent'.freeze, customer: 'customer'.freeze).freeze
 
   update_index 'users#user', :self
   has_secure_password

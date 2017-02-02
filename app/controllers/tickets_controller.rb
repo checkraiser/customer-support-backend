@@ -10,7 +10,9 @@ class TicketsController < ApplicationController
   end
 
   def create
-    ticket_manager.create(*create_params)
+    record = ticket_manager.create(*create_params)
+    present(record)
+    render :show
   end
 
   def reply

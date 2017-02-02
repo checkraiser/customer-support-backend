@@ -7,14 +7,14 @@ describe UserManager, freeze: true do
     let(:params) { attributes_for(:customer) }
 
     it 'creates user' do
-      expect { subject.create(params) }.to change(User, :count).by(1)
+      expect { subject.create_customer(params) }.to change(User, :count).by(1)
     end
 
     context 'when email exists in db' do
-      before { subject.create(params) }
+      before { subject.create_customer(params) }
 
       it 'raises error ActiveRecord::RecordInvalid' do
-        expect { subject.create(params) }.to raise_error(ActiveRecord::RecordInvalid)
+        expect { subject.create_customer(params) }.to raise_error(ActiveRecord::RecordInvalid)
       end
     end
   end

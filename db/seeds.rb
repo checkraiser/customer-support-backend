@@ -27,6 +27,9 @@ end
 Chewy.strategy(:atomic) do
   create :admin, email: 'admin@example.com'
   create :support_agent
+  create :customer, first_name: 'Test #1'
+  create :customer, first_name: 'Test #2'
+  create :customer, first_name: 'Test #3'
 
   customers = create_list :customer, 3
   customers.each do |customer|

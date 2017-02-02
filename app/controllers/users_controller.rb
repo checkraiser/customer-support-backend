@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    user_manager.create(signup_params)
+    user_manager.create_customer(signup_params)
     head :created
   end
 

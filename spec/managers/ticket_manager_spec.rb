@@ -8,6 +8,10 @@ describe TicketManager, freeze: true do
       expect { subject.create('title', 'body') }.to change(Ticket, :count).by(1)
     end
 
+    it 'sets ticket status to new' do
+      expect(subject.create('title', 'body').status).to eql('new')
+    end
+
     context 'when title is empty' do
       it 'raises error ActiveRecord::RecordInvalid' do
         expect { subject.create('', 'body') }.to raise_error(ActiveRecord::RecordInvalid)

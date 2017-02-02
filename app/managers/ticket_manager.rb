@@ -4,7 +4,7 @@ class TicketManager < ApplicationManager
   # @param [String] title
   # @param [String] body
   def create(title, body)
-    @current_user.tickets.create!(title: title, body: body)
+    @current_user.tickets.create!(title: title, body: body, status: Ticket::STATUS.new)
   end
 
   # creates Reply and updates ticket's status if not empty

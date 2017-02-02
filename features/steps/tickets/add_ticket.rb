@@ -9,6 +9,10 @@ class Spinach::Features::AddTicket < Spinach::FeatureSteps
 
   private
 
+  def schema
+    'ticket'
+  end
+
   def params
     {
       title: Faker::Lorem.sentence,
